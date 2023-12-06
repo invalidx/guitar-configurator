@@ -26,6 +26,9 @@ jobs:
           submodules: true
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
+      - name: Restore vcpkg packages
+        working-directory: ${{env.GITHUB_WORKSPACE}}
+        run: vcpkg integrate install
       - name: Build
         run: |
           mkdir release
